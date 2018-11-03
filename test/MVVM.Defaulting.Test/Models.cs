@@ -97,4 +97,48 @@ namespace MVVM.Defaulting.Test
         #endregion
 
     }
+
+    class Person: BindableBase
+    {
+        #region NotifyProperty FirstName
+        private string _FirstName;
+
+        public string FirstName
+        {
+            get { return _FirstName; }
+            set { SetProperty(ref _FirstName, value, () => FirstName); }
+        }
+        #endregion
+        
+        #region NotifyProperty MidName
+        private string _MidName;
+
+        public string MidName
+        {
+            get { return _MidName; }
+            set { SetProperty(ref _MidName, value, () => MidName); }
+        }
+        #endregion
+        
+        #region NotifyProperty LastName
+        private string _LastName;
+
+        public string LastName
+        {
+            get { return _LastName; }
+            set { SetProperty(ref _LastName, value, () => LastName); }
+        }
+        #endregion
+        
+        #region NotifyProperty FullName
+        private string _FullName;
+
+        public string FullName
+        {
+            get { return _FullName; }
+            set { SetProperty(ref _FullName, value, () => FullName); }
+        }
+        #endregion
+    }
+    
 }

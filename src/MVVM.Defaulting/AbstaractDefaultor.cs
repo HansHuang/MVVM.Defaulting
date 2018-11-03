@@ -13,13 +13,16 @@ namespace MVVM.Defaulting
         where T : INotifyPropertyChanged
     {
         #region Fields
-        public List<IDefaultingRule<T>> Rules = new List<IDefaultingRule<T>>();
+        public readonly List<IDefaultingRule<T>> Rules = new List<IDefaultingRule<T>>();
+        public bool IsDisabled;
+        public readonly List<string> ChangedProperties = new List<string>();
+        public bool PreventDeadLoop = true;
         #endregion
 
         #region RuleFor
-        public DefaultingRule<T, Tproperty> RuleFor<Tproperty>(Expression<Func<T, Tproperty>> property)
+        public DefaultingRule<T, TProperty> RuleFor<TProperty>(Expression<Func<T, TProperty>> property)
         {
-            var rule = new DefaultingRule<T, Tproperty>(property);
+            var rule = new DefaultingRule<T, TProperty>(property);
             Rules.Add(rule);
             return rule;
         }
